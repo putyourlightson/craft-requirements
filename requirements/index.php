@@ -7,7 +7,8 @@ error_reporting(E_ALL ^ E_STRICT);
 
 
 // bootstrap craft function
-function craft() {
+function craft() 
+{
 	return new Craft;
 }
 
