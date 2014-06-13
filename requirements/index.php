@@ -61,4 +61,4 @@ else
 
 
 // include view file
-include('view.php');
+include('views/index.php');
