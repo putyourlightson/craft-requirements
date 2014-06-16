@@ -10,8 +10,15 @@ class Craft
 		$this->db = new DB;
 	}
 
-	public static function t($s)
+	public static function t($s, $vars)
 	{
-		return $s;
+		$replace = array();
+
+		foreach ($vars as $key => $value) 
+		{
+			$replace[] = '{'.$key.'}';
+		}
+
+		return str_replace($replace, $vars, $s);
 	}
 }

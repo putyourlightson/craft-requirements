@@ -26,38 +26,38 @@ require_once('etc/Requirements.php');
 
 $requirements = Requirements::getRequirements();
 
-$failed = array();
-$warning = array();
+$failures = array();
+$warnings = array();
 
 foreach ($requirements as $requirement)
 {
 	if ($requirement->getResult() == RequirementResult::Failed )
 	{
-		$failed[] = $requirement->getNotes();
+		$failures[] = $requirement->getNotes();
 	}
 
 	else if ($requirement->getResult() == RequirementResult::Warning )
 	{
-		$warning[] = $requirement->getNotes();
+		$warnings[] = $requirement->getNotes();
 	}
 }
 
-if (count($failed))
+if (count($failures))
 {
 	$title = 'Failed';
-	$message = join('<br/>', $failed);
+	$messages = array_merge($failures, $warnings);
 }
 
-else if (count($warning))
+else if (count($warnings))
 {
 	$title = 'Warning';
-	$message = join('<br/>', $warning);
+	$messages = $warnings;
 }
 
 else 
 {
 	$title = 'Success';
-	$message = 'Minimum requirements met. Craft can run on this server!!';
+	$messages = 'Minimum requirements met. Craft can run on this server!!';
 }
 
 
