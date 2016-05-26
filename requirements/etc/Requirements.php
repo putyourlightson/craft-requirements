@@ -135,6 +135,13 @@ class Requirements
 				'<a href="http://buildwithcraft.com">Craft</a>',
 				Craft::t('Craft requires <a href="http://php.net/manual/en/book.iconv.php">iconv</a> in order to run.')
 			),
+			new Requirement(
+				Craft::t('memory_get_usage() support'),
+				function_exists('memory_get_usage'),
+				false,
+				'<a href="https://github.com/pixelandtonic/Craft-Release/blob/master/app/services/ImagesService.php#L130">Craft-Release/app/services/ImagesService.php</a>',
+				Craft::t('Craft\'s ImagesService requires <a href="http://php.net/manual/en/function.memory-get-usage.php">memory_get_usage</a> in order to calculate the memory required for image transforms.')
+			),
 		);
 	}
 
